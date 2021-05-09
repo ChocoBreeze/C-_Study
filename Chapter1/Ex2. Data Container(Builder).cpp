@@ -1,18 +1,18 @@
-// ´Ù¾çÇÑ Å¸ÀÔÀÇ µ¥ÀÌÅÍ -> °øÅë Å¸ÀÔ º¯È¯
-#include<array> // ÀüÃ¼ ¿ø¼Ò ºü¸¥ ¼øÈ¸¸¦ À§ÇØ
+// ë‹¤ì–‘í•œ íƒ€ì…ì˜ ë°ì´í„° -> ê³µí†µ íƒ€ì… ë³€í™˜
+#include<array> // ì „ì²´ ì›ì†Œ ë¹ ë¥¸ ìˆœíšŒë¥¼ ìœ„í•´
 #include<iostream>
 #include<type_traits>
 
 using std::array;
 /*
-auto°¡ °ª¿¡ »óÀÀÇÏ´Â Å¸ÀÔÀ» Ãß·Ğ½ÃÄÑÁÖ´Â Å°¿öµå¶ó¸é,
-decaltypeÀº °ªÀ¸·ÎºÎÅÍ Å¸ÀÔÀ» ÃßÃâÇØ ³¾ ¼ö ÀÖ´Â Å°¿öµå¶ó°í »ı°¢ÇÏ¸é µÈ´Ù.
-trailing return type(ÈÄÇà ¹İÈ¯ Çü½Ä) auto ¹İÈ¯Çü¿¡¼­ ÁÖ·Î ÀÌ¿ë
+autoê°€ ê°’ì— ìƒì‘í•˜ëŠ” íƒ€ì…ì„ ì¶”ë¡ ì‹œì¼œì£¼ëŠ” í‚¤ì›Œë“œë¼ë©´,
+decaltypeì€ ê°’ìœ¼ë¡œë¶€í„° íƒ€ì…ì„ ì¶”ì¶œí•´ ë‚¼ ìˆ˜ ìˆëŠ” í‚¤ì›Œë“œë¼ê³  ìƒê°í•˜ë©´ ëœë‹¤.
+trailing return type(í›„í–‰ ë°˜í™˜ í˜•ì‹) auto ë°˜í™˜í˜•ì—ì„œ ì£¼ë¡œ ì´ìš©
 */
-// ÄÁÅ×ÀÌ³Ê »ı¼º ÇÔ¼ö - °¡º¯ ÅÛÇÃ¸´(ÀÓÀÇ °³¼öÀÇ ¸Å°³º¯¼ö Çã¿ë)
+// ì»¨í…Œì´ë„ˆ ìƒì„± í•¨ìˆ˜ - ê°€ë³€ í…œí”Œë¦¿(ì„ì˜ ê°œìˆ˜ì˜ ë§¤ê°œë³€ìˆ˜ í—ˆìš©)
 // common_type : Determines the common type among all types T..., that is the type all T... can be implicitly converted to.
 // auto & decltype(declared type)
-// std::forward ÂüÁ¶¿Í °ü·Ã. º¸Æí ÂüÁ¶.
+// std::forward ì°¸ì¡°ì™€ ê´€ë ¨. ë³´í¸ ì°¸ì¡°.
 template<typename ... Args>
 auto build_array(Args&&... args) -> array<typename std::common_type<Args...>::type, sizeof...(args)>
 {
@@ -23,7 +23,7 @@ auto build_array(Args&&... args) -> array<typename std::common_type<Args...>::ty
 int main() 
 {
 	auto data = build_array(1, 0u, 'a', 3.2f, false);
-	// auto data2 = build_array(1, "Packt", 2.0); error. ´Ù Ä¿¹öµÇ´Â ÀÚ·áÇüÀÌ ¾øÀ½
+	// auto data2 = build_array(1, "Packt", 2.0); error. ë‹¤ ì»¤ë²„ë˜ëŠ” ìë£Œí˜•ì´ ì—†ìŒ
 
 	for (auto i : data) {
 		std::cout << i << " ";
