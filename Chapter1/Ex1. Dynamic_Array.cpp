@@ -1,4 +1,4 @@
-/*µ¿Àû Å©±â ¹è¿­ ±¸Çö*/
+/*ë™ì  í¬ê¸° ë°°ì—´ êµ¬í˜„*/
 #define _SCL_SECURE_NO_WARNINGS
 #include<string>
 #include<algorithm>
@@ -6,12 +6,12 @@
 #include<sstream> // stringstream
 
 using std::string;
-// µ¿Àû ¹è¿­
+// ë™ì  ë°°ì—´
 template <typename T>
 class dynamic_array {
 private:
-	T* data; // ÀÚ·áÇü
-	size_t n; // Å©±â
+	T* data; // ìë£Œí˜•
+	size_t n; // í¬ê¸°
 
 public:
 	dynamic_array(int n) {
@@ -43,7 +43,7 @@ public:
 		throw "Index out of range";
 	}
 
-	//size ¹İÈ¯
+	//size ë°˜í™˜
 	size_t size() const {
 		return n;
 	}
@@ -66,7 +66,7 @@ public:
 		return result;
 	}
 
-	// ¹è¿­¿¡ ÀúÀåµÈ ¸ğµç µ¥ÀÌÅÍ ¹®ÀÚ¿­·Î ¹İÈ¯
+	// ë°°ì—´ì— ì €ì¥ëœ ëª¨ë“  ë°ì´í„° ë¬¸ìì—´ë¡œ ë°˜í™˜
 	string to_string(const string& sep = ", ") {
 		if (n == 0)
 			return "";
@@ -82,10 +82,10 @@ public:
 	}
 };
 
-// ÇĞ»ı Á¤º¸¸¦ ÀúÀåÇÒ ±¸Á¶Ã¼
+// í•™ìƒ ì •ë³´ë¥¼ ì €ì¥í•  êµ¬ì¡°ì²´
 struct student {
 	string name;
-	int standard; // ÇĞ±Ş
+	int standard; // í•™ê¸‰
 };
 
 std::ostream& operator<<(std::ostream& os, const student& s) {
@@ -94,35 +94,35 @@ std::ostream& operator<<(std::ostream& os, const student& s) {
 
 int main() {
 	int nStudents;
-	std::cout << "1¹İ ÇĞ»ı ¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ";
+	std::cout << "1ë°˜ í•™ìƒ ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”: ";
 	std::cin >> nStudents;
 
 	dynamic_array<student> class1(nStudents);
 	for (int i = 0; i < nStudents; i++) {
 		string name;
 		int standard;
-		std::cout << i + 1 << "¹øÂ° ÇĞ»ı ÀÌ¸§°ú ³ªÀÌ¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ";
+		std::cout << i + 1 << "ë²ˆì§¸ í•™ìƒ ì´ë¦„ê³¼ ë‚˜ì´ë¥¼ ì…ë ¥í•˜ì„¸ìš”: ";
 		std::cin >> name >> standard;
 		class1[i] = student{ name, standard }; 
 		// class1[i].name = name;
 		// class1[i].standard = standard;
 	}
 
-	// ¹è¿­ Å©±âº¸´Ù Å« ÀÎµ¦½ºÀÇ ÇĞ»ı¿¡ Á¢±Ù
+	// ë°°ì—´ í¬ê¸°ë³´ë‹¤ í° ì¸ë±ìŠ¤ì˜ í•™ìƒì— ì ‘ê·¼
 	/*try {
-		//class1[nStudents] = student{ "John", 8 }; // ¿¹»óÇÒ ¼ö ¾ø´Â µ¿ÀÛ
+		//class1[nStudents] = student{ "John", 8 }; // ì˜ˆìƒí•  ìˆ˜ ì—†ëŠ” ë™ì‘
 		//class1.at(nStudents) = student{ "John", 8 };
 	} catch (...) {
-		std::cout << "¿¹¿Ü ¹ß»ı!" << std::endl;
+		std::cout << "ì˜ˆì™¸ ë°œìƒ!" << std::endl;
 	}*/
 
-	//±íÀº º¹»ç
+	//ê¹Šì€ ë³µì‚¬
 	auto class2 = class1;
-	std::cout << "1¹øÀ» º¹»çÇÏ¿© 2¹ø »ı¼º: " << class2.to_string() << std::endl;
+	std::cout << "1ë²ˆì„ ë³µì‚¬í•˜ì—¬ 2ë²ˆ ìƒì„±: " << class2.to_string() << std::endl;
 
-	//µÎ ÇĞ±ŞÀ» ÇÕÃÄ¼­ »õ·Î¿î Å« ÇĞ±Ş »ı¼º
+	//ë‘ í•™ê¸‰ì„ í•©ì³ì„œ ìƒˆë¡œìš´ í° í•™ê¸‰ ìƒì„±
 	auto class3 = class1 + class2;
-	std::cout << "1¹İ°ú 2¹İÀ» ÇÕÃÄ 3¹İ »ı¼º: " << class3.to_string() << std::endl;
+	std::cout << "1ë°˜ê³¼ 2ë°˜ì„ í•©ì³ 3ë°˜ ìƒì„±: " << class3.to_string() << std::endl;
 
 	return 0;
 }
