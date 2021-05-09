@@ -1,14 +1,14 @@
-// Á¶°ÇºÎ ¿ø¼Ò »èÁ¦
+// ì¡°ê±´ë¶€ ì›ì†Œ ì‚­ì œ
 #include<string>
 #include<iostream>
 #include<forward_list>
 /*forward_list : single linked list
-Âü°í : https://shaeod.tistory.com/493?category=536269
+ì°¸ê³  : https://shaeod.tistory.com/493?category=536269
 http://www.cplusplus.com/reference/forward_list/forward_list/remove_if/
 */
 /*
 lambda
-Âü°í
+ì°¸ê³ 
 https://blog.koriel.kr/modern-cpp-lambdayi-teugjinggwa-sayongbeob/
 */
 
@@ -27,18 +27,18 @@ int main() {
 		{"Kim", 22}, {"Lee",25}, {"Park",18}, {"Jin", 16}
 	};
 
-	auto citizens_copy = citizens; //±íÀº º¹»ç
+	auto citizens_copy = citizens; //ê¹Šì€ ë³µì‚¬
 
-	std::cout << "ÀüÃ¼ ½Ã¹Îµé: ";
+	std::cout << "ì „ì²´ ì‹œë¯¼ë“¤: ";
 	for (const auto&c : citizens)
 		std::cout << c << " ";
 	std::cout << std::endl;
 
-	citizens.remove_if([](const citizen &c) { //³ªÀÌ°¡ 19¼¼º¸´Ù ÀÛÀ¸¸é ¸®½ºÆ®¿¡¼­ Á¦°Å
+	citizens.remove_if([](const citizen &c) { //ë‚˜ì´ê°€ 19ì„¸ë³´ë‹¤ ì‘ìœ¼ë©´ ë¦¬ìŠ¤íŠ¸ì—ì„œ ì œê±°
 		return (c.age < 19);
 	});
 
-	std::cout << "ÅõÇ¥±ÇÀÌ ÀÖ´Â ½Ã¹Îµé: ";
+	std::cout << "íˆ¬í‘œê¶Œì´ ìˆëŠ” ì‹œë¯¼ë“¤: ";
 	for (const auto&c : citizens)
 		std::cout << c << " ";
 	std::cout << std::endl;
@@ -47,7 +47,7 @@ int main() {
 		return (c.age != 18);
 	});
 
-	std::cout << "³»³â¿¡ ÅõÇ¥±ÇÀÌ »ı±â´Â ½Ã¹Îµé: ";
+	std::cout << "ë‚´ë…„ì— íˆ¬í‘œê¶Œì´ ìƒê¸°ëŠ” ì‹œë¯¼ë“¤: ";
 	for (const auto&c : citizens_copy)
 		std::cout << c << " ";
 	std::cout << std::endl;
