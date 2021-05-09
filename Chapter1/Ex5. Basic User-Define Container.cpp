@@ -1,4 +1,4 @@
-// »ç¿ëÀÚ Á¤ÀÇ ÄÁÅ×ÀÌ³Ê ¸¸µé±â
+// ì‚¬ìš©ì ì •ì˜ ì»¨í…Œì´ë„ˆ ë§Œë“¤ê¸°
 #include<iostream>
 #include<algorithm>
 
@@ -11,15 +11,15 @@ class singly_ll {
 public:
 	using node = singly_ll_node;
 	using node_ptr = node * ;
-	//using -> alis º°Äª 
-	//Âü°í : https://unikys.tistory.com/381
+	//using -> alis ë³„ì¹­ 
+	//ì°¸ê³  : https://unikys.tistory.com/381
 
 private:
 	node_ptr head;
 
 
 public:
-	//std::forward_listÀÇ push_front pop_front ±¸Çö
+	//std::forward_listì˜ push_front pop_front êµ¬í˜„
 	void push_front(int val)
 	{
 		auto new_node = new node{ val, NULL };
@@ -35,7 +35,7 @@ public:
 			delete first;
 		}
 	}
-	// ±âº» ¹İº¹ÀÚ ±¸Çö
+	// ê¸°ë³¸ ë°˜ë³µì êµ¬í˜„
 	struct singly_ll_iterator {
 	private:
 		node_ptr ptr;
@@ -47,17 +47,17 @@ public:
 
 		node_ptr get() { return ptr; }
 
-		singly_ll_iterator& operator++() { // ¼±Çà Áõ°¡
+		singly_ll_iterator& operator++() { // ì„ í–‰ ì¦ê°€
 			ptr = ptr->next;
 			return *this;
 		}
-		singly_ll_iterator& operator++(int) {// ÈÄÇà Áõ°¡
+		singly_ll_iterator& operator++(int) {// í›„í–‰ ì¦ê°€
 			singly_ll_iterator result = *this;
 			++(*this);
 			return result;
 		}
 
-		// µÎ ¹İº¹ÀÚ°¡ °°ÀºÁö ÆÇ´Ü
+		// ë‘ ë°˜ë³µìê°€ ê°™ì€ì§€ íŒë‹¨
 		friend bool operator==(const singly_ll_iterator& left, const singly_ll_iterator& right) {
 			return left.ptr == right.ptr;
 		}
@@ -65,14 +65,14 @@ public:
 			return left.ptr != right.ptr;
 		}
 	};
-	//ÇÔ¼ö ¼±¾ğ µÚ(body Á÷Àü)¿¡ "const" Å°¿öµå¸¦ »ğÀÔÇÏ¸é, ÇØ´ç ÇÔ¼ö°¡ ¼ÓÇÑ °´Ã¼ÀÇ ¸â¹ö¸¦ º¯°æÇÒ ¼ö ¾ø½À´Ï´Ù.
+	//í•¨ìˆ˜ ì„ ì–¸ ë’¤(body ì§ì „)ì— "const" í‚¤ì›Œë“œë¥¼ ì‚½ì…í•˜ë©´, í•´ë‹¹ í•¨ìˆ˜ê°€ ì†í•œ ê°ì²´ì˜ ë©¤ë²„ë¥¼ ë³€ê²½í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.
 	singly_ll_iterator begin() { return singly_ll_iterator(head); }
 	singly_ll_iterator end() { return singly_ll_iterator(NULL); }
 	singly_ll_iterator begin() const { return singly_ll_iterator(head); }
 	singly_ll_iterator end() const { return singly_ll_iterator(NULL); }
 
-	singly_ll() = default; // ±âº» »ı¼ºÀÚ 
-	//±íÀº º¹»ç - º¹»ç »ı¼ºÀÚ
+	singly_ll() = default; // ê¸°ë³¸ ìƒì„±ì 
+	//ê¹Šì€ ë³µì‚¬ - ë³µì‚¬ ìƒì„±ì
 	singly_ll(const singly_ll& other) : head(NULL) {
 		if (other.head) {
 			head = new node{ 0,NULL };
@@ -92,7 +92,7 @@ public:
 			}
 		}
 	}
-	//ÃÊ±âÈ­ ¸®½ºÆ® initializer_listÀÌ¿ë {}·Î ¸¸µå´Â °ªµé
+	//ì´ˆê¸°í™” ë¦¬ìŠ¤íŠ¸ initializer_listì´ìš© {}ë¡œ ë§Œë“œëŠ” ê°’ë“¤
 	singly_ll(const std::initializer_list<int>& ilist) : head(NULL) {
 		for (auto it = std::rbegin(ilist); it != std::rend(ilist); it++)
 			push_front(*it);
@@ -105,7 +105,7 @@ int main()
 	singly_ll sll = { 1,2,3 };
 	sll.push_front(0);
 
-	cout << "Ã¹ ¹øÂ° ¸®½ºÆ®: ";
+	cout << "ì²« ë²ˆì§¸ ë¦¬ìŠ¤íŠ¸: ";
 	for (auto i : sll) {
 		std::cout << i << " ";
 	}
@@ -113,12 +113,12 @@ int main()
 
 	auto sll2 = sll;
 	sll2.push_front(-1);
-	cout << "Ã¹ ¹øÂ° ¸®½ºÆ®¸¦ º¹»çÇÑ ÈÄ, ¸Ç ¾Õ¿¡ -1À» Ãß°¡: ";
+	cout << "ì²« ë²ˆì§¸ ë¦¬ìŠ¤íŠ¸ë¥¼ ë³µì‚¬í•œ í›„, ë§¨ ì•ì— -1ì„ ì¶”ê°€: ";
 	for (auto i : sll2) {
 		cout << i << ' ';
 	}
 	cout << endl;
-	cout << "±íÀº º¹»ç ÈÄ Ã¹ ¹øÂ° ¸®½ºÆ®: ";
+	cout << "ê¹Šì€ ë³µì‚¬ í›„ ì²« ë²ˆì§¸ ë¦¬ìŠ¤íŠ¸: ";
 
 	for (auto i : sll) {
 		std::cout << i << " ";
