@@ -1,1 +1,14 @@
+1.리스트, 스택, 큐
+1) std::array
+길이가 고정 -> vector
+제공 함수 : .at(index), front(), back(), data() 등
+2) std::vector
+제공 함수 : push_back(), insert(), emplace_back, elplace(), pop_back(), erase(), clear(), reserve(capacity), shrink_to_fit() 등
 
+array와 vector 모두 연속된 자료형이고 연결된 자료형이 필요 -> 기본 구현(forward_list)
+3) std::forward_list 
+single linked list
+제공 함수 : remove(), remove_if(), reverse(), unique() 등
+4) 반복자
+-STL 컨테이너에 대해 공통의 인터페이스 제공
+-반복자 타입에 따라 사용가능한 함수가 다름
