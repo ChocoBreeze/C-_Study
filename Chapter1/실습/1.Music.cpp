@@ -24,7 +24,7 @@ private:
 
 public:
 	cir_list() : n(0) {
-		head = new node{ NULL,NULL,NULL }; // Data, next, prev ¸ğµÎ NULL
+		head = new node{ NULL,NULL,NULL }; // Data, next, prev ëª¨ë‘ NULL
 		head->next = head;
 		head->prev = head;
 	}
@@ -35,11 +35,11 @@ public:
 
 	void insert(const T& value) {
 		node_ptr newNode = new node{ new T(value), NULL, NULL };
-		n++; // °³¼ö Áõ°¡
+		n++; // ê°œìˆ˜ ì¦ê°€
 		auto dummy = head->prev; // dummy - head
 		dummy->next = newNode; // dummy - newNode
 		newNode->prev = dummy; // dummy - newNode
-		if (head == dummy) { // Ã¹ insert
+		if (head == dummy) { // ì²« insert
 			dummy->prev = newNode;
 			newNode->next = dummy;
 			head = newNode;
@@ -63,7 +63,7 @@ public:
 			}
 			cur = cur->next;
 		}
-		std::cout << "±×·± ³ë·¡°¡ ¾ø½À´Ï´Ù!." << std::endl;
+		std::cout << "ê·¸ëŸ° ë…¸ë˜ê°€ ì—†ìŠµë‹ˆë‹¤!." << std::endl;
 	}
 
 	struct cir_list_it { //iterator
@@ -85,7 +85,7 @@ public:
 			ptr = ptr->next;
 			return *this;
 		}
-		cir_list_it operator++(int) { // ±×³É °ª Áõ°¡ÀÎ°Å°°Àºµ¥?
+		cir_list_it operator++(int) { // ê·¸ëƒ¥ ê°’ ì¦ê°€ì¸ê±°ê°™ì€ë°?
 			cir_list_it it = *this;
 			++(*this);
 			return it;
@@ -112,7 +112,7 @@ public:
 	cir_list_it begin() {
 		return cir_list_it{ head };
 	}
-	cir_list_it begin() const{ // °´Ã¼ º¯°æ x
+	cir_list_it begin() const{ // ê°ì²´ ë³€ê²½ x
 		return cir_list_it{ head };
 	}
 	
@@ -124,13 +124,13 @@ public:
 	}
 
 	cir_list(const cir_list<T>& other) : cir_list() {
-		for (const auto& i : other) { //¿ª¼øÀ¸·Î »ğÀÔÇÏÁö¸¸ ¿øÇü ¸®½ºÆ®¶ó ¹®Á¦ ¾øÀ½
+		for (const auto& i : other) { //ì—­ìˆœìœ¼ë¡œ ì‚½ì…í•˜ì§€ë§Œ ì›í˜• ë¦¬ìŠ¤íŠ¸ë¼ ë¬¸ì œ ì—†ìŒ
 			insert(i);
 		}
 	}
 
 	cir_list(const std::initializer_list<T>& i1) : head(NULL), n(0) {
-		for (const auto& i : i1) { //¿ª¼øÀ¸·Î »ğÀÔÇÏÁö¸¸ ¿øÇü ¸®½ºÆ®¶ó ¹®Á¦ ¾øÀ½
+		for (const auto& i : i1) { //ì—­ìˆœìœ¼ë¡œ ì‚½ì…í•˜ì§€ë§Œ ì›í˜• ë¦¬ìŠ¤íŠ¸ë¼ ë¬¸ì œ ì—†ìŒ
 			insert(i);
 		}
 	}
@@ -164,13 +164,13 @@ int main() {
 	playlist pl;
 	pl.insert(1);
 	pl.insert(2);
-	std::cout << "Àç»ı ¸ñ·Ï : ";
+	std::cout << "ì¬ìƒ ëª©ë¡ : ";
 	pl.loopOnce();
 
 	playlist pl2 = pl;
 	pl2.erase(2);
 	pl2.insert(3);
-	std::cout << "µÎ ¹øÂ° Àç»ı ¸ñ·Ï : ";
+	std::cout << "ë‘ ë²ˆì§¸ ì¬ìƒ ëª©ë¡ : ";
 	pl2.loopOnce();
 	return 0;
 }
