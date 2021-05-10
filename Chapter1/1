@@ -15,4 +15,20 @@ single linked list
 실습 문제1
 5) std::list - double linked list
 실습 문제2
-6) std::dequ
+6) std::deque(double ended queue)
+배열 기반과 리스트 기반이 섞여있음 둘의 장점을 적당히 가진다.
+크기가 같은 여러 개의 메모리 청크 이용
+제공 함수 : push_front(), push_back(), insert(), emplace_front(), emplace_back(), emplace(), pop_front(), pop_back(), erase(), shrink_to_fit() 등
+임의 접근 반복자 제공 등 유용함!
+7) 컨테이너 어댑터
+기존에 만들어진 컨테이너를 기반으로 만들어진 컨테이너
+std::stack - std::deque를 기본으로 하지만 다른 컨테이너를 지정 가능함
+std::queue - std::deque를 기본 - why? -> stack에서와 동일한 이유 = 저장 공간 재할당 시 전체 원소를 이동할 필요가 없으니까.
+std::priority_queue(heap 제공) - std::vector를 기본
+이들 3개의 어댑터에 대해서는 반복자 제공 안 함
+8) 벤치마킹
+-통계 데이터를 기반으로 더 나은 접근 방식을 결정(여러 컨테이너가 비슷한 성능을 보이는 경우)
+
+데이터를 어떻게 저장할 것인가!
+-기본 컨테이너
+-컨테이너 어댑터
