@@ -9,7 +9,7 @@ int main() {
 
 	list1.pop_back();
 
-	std::cout << "»ğÀÔ & »èÁ¦ ÈÄ ¸®½ºÆ®: ";
+	std::cout << "Â»Ã°Ã€Ã” & Â»Ã¨ÃÂ¦ ÃˆÃ„ Â¸Â®Â½ÂºÃ†Â®: ";
 	for (auto i : list1)
 		std::cout << i << " ";
 }
