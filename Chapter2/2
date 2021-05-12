@@ -10,3 +10,7 @@
   Post-order traversal(후위 순회) : Left -> Right -> 현재
   Lefer-order traversal : Tree의 root부터 차례대로 나열
 3) 다양한 트리 구조 
+  Binary Search Tree(BST)
+    속성 : 부모 노드의 값 >= 왼쪽 자식 노드의 값 & 부모 노드의 값 <= 오른쪽 자식 노드의 값
+    Complete binary tree -> 검색 및 삽입 = O(logN)
+  Balanced Tree
