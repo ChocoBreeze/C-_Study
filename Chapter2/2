@@ -1,0 +1,12 @@
+2. 트리 힙 그래프
+비선형 자료구조
+1) 비선형 문제
+-계층적 문제 -> Tree
+-순환 종속성 -> Graph
+2) 트리 : 상하 반전된 형태(뿌리(root node)가 맨 위)
+-순회(Traversal)
+  Preorder traversal(전위 순회) : 현재 -> Left -> Right
+  In-order traversal(중위 순회) : Left -> 현재 -> Right
+  Post-order traversal(후위 순회) : Left -> Right -> 현재
+  Lefer-order traversal : Tree의 root부터 차례대로 나열
+3) 다양한 트리 구조 
