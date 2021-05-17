@@ -1,1 +1,19 @@
-
+Lookup & Hash
+Lookup(조회) = 특정 원소가 컨테이너에 있는지 확인하거나 또는 특정 컨테이너에서 특정 Key에 해당하는 Value을 찾는 작업
+--> 빠르게 하기 위해서 Hash Table & Bloom Filter 이용
+1) Hash Table
+  높이 균형 트리 - O(logN) --> 검색 횟수가 늘어나면 연산 속도가 만족스럽지 않다. --> Hash Table이용
+  Hashing = 데이터를 가급적 고유한 숫자 값으로 표현 후 데이터의 유무 등 확인
+  가장 간단한 Hash Function = Modulo Function --> Collision 문제 발생 가능
+  Collision(충돌) 문제 해결
+    1. Chaining -- Linked List
+      삽입은 O(1), lookup과 삭제에서 시간 소요가 증가.
+      Hash Table의 크기 너무 크면 메모리 낭비 / 너무 작으면 충돌 증가 --> 적절히 조절할 필요 있음
+      Load Factor(부하율) = 전체 키 개수 / 해시 테이블 크기
+        = 1 -> 이상적인 상태
+        < 1 -> 메모리 낭비될 수 있음
+        > 1 -> 검색, 삭제 등이 느리게 동작 가능
+      But, 부하율이 해시 테이블의 성능을 결정하는 유일한 지표는 아니며 때로는 이상적이지 않은 경우에 대해 이상적이라 생각 가능.
+      --> 해시 함수에서 다른 Key에 대해 겹치지 않도록 분포되는 해시 값을 만드는 것이 중요하다
+    2. Open Addressing(열린 주소 지정)
+      
