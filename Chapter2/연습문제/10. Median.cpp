@@ -1,4 +1,4 @@
-//Áß¾Ó°ª(median) ±¸ÇÏ±â
+//ì¤‘ì•™ê°’(median) êµ¬í•˜ê¸°
 #include<iostream>
 #include<queue>
 #include<vector>
@@ -8,9 +8,9 @@ struct median {
 	std::priority_queue<int, std::vector<int>, std::greater<int>> minHeap; // greater<int> a>b
 	//priority queue T, container, Compare
 
-	void insert(int data) { // »õ·Î µé¾î¿Â µ¥ÀÌÅÍ ÀúÀå
-		// Áß¾Ó°ªº¸´Ù ÀÛÀº »õ µ¥ÀÌÅÍ -> ÃÖ´ë Èü
-		// Áß¾Ó°ªº¸´Ù Å« »õ µ¥ÀÌÅÍ -> ÃÖ¼Ò Èü
+	void insert(int data) { // ìƒˆë¡œ ë“¤ì–´ì˜¨ ë°ì´í„° ì €ì¥
+		// ì¤‘ì•™ê°’ë³´ë‹¤ ì‘ì€ ìƒˆ ë°ì´í„° -> ìµœëŒ€ í™
+		// ì¤‘ì•™ê°’ë³´ë‹¤ í° ìƒˆ ë°ì´í„° -> ìµœì†Œ í™
 		if (maxHeap.size() == 0) {
 			maxHeap.push(data);
 			return;
@@ -42,7 +42,7 @@ struct median {
 		else minHeap.push(data);
 	}
 
-	double get() { // ÀúÀåµÈ ¿ø¼Ò·ÎºÎÅÍ Áß¾Ó°ª ¹İÈ¯
+	double get() { // ì €ì¥ëœ ì›ì†Œë¡œë¶€í„° ì¤‘ì•™ê°’ ë°˜í™˜
 		if (maxHeap.size() == minHeap.size()) return (maxHeap.top() + minHeap.top()) / 2.0;
 		if (maxHeap.size() < minHeap.size())
 			return minHeap.top();
@@ -55,19 +55,19 @@ int main() {
 	median med;
 
 	med.insert(1);
-	std::cout << "1 »ğÀÔ ÈÄ Áß¾Ó°ª: " << med.get() << std::endl;
+	std::cout << "1 ì‚½ì… í›„ ì¤‘ì•™ê°’: " << med.get() << std::endl;
 
 	med.insert(5);
-	std::cout << "5 »ğÀÔ ÈÄ Áß¾Ó°ª: " << med.get() << std::endl;
+	std::cout << "5 ì‚½ì… í›„ ì¤‘ì•™ê°’: " << med.get() << std::endl;
 
 	med.insert(2);
-	std::cout << "2 »ğÀÔ ÈÄ Áß¾Ó°ª: " << med.get() << std::endl;
+	std::cout << "2 ì‚½ì… í›„ ì¤‘ì•™ê°’: " << med.get() << std::endl;
 
 	med.insert(10);
-	std::cout << "10 »ğÀÔ ÈÄ Áß¾Ó°ª: " << med.get() << std::endl;
+	std::cout << "10 ì‚½ì… í›„ ì¤‘ì•™ê°’: " << med.get() << std::endl;
 
 	med.insert(40);
-	std::cout << "40 »ğÀÔ ÈÄ Áß¾Ó°ª: " << med.get() << std::endl;
+	std::cout << "40 ì‚½ì… í›„ ì¤‘ì•™ê°’: " << med.get() << std::endl;
 	
 	return 0;
 }
