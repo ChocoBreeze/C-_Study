@@ -14,3 +14,23 @@
     속성 : 부모 노드의 값 >= 왼쪽 자식 노드의 값 & 부모 노드의 값 <= 오른쪽 자식 노드의 값
     Complete binary tree -> 검색 및 삽입 = O(logN)
   Balanced Tree
+    검색 : 트리의 높이에 비례 -> 균형 잡힌 트리가 중요. by 트리 회전 -> AVL 트리, Red-Black Tree
+  N-ary Tree(N항 트리)
+    각 node가 N개의 자식을 가질 수 있음 - Vector 이용
+    요구 사항에 맞는 형태의 트리를 만들어 사용하자.
+    사용 예시 : 컴퓨터 파일 시스템 구조, 컴파일러 ...
+4) Heap
+  시간 복잡도 : 최대 원소 접근(max-heap) = O(1), 삽입 및 삭제 = O(logN)
+  Complete binary tree를 사용해야 함
+  max-heap : 최대 원소 접근 = O(1) --> 부모 노드가 두 개의 자식 노드보다 항상 커야 함 <-> min-heap
+  Complete binary tree 유지(삽입, 삭제 - 루트 노드만 가능, 초기화(O(N)))
+5) 그래프
+  트리에는 없는 원형 구조, 순환 구조를 표현할 수 있다.
+  Weighted / Unweighted
+  Directed / Undirected
+  표현 방법 : 
+    1.Adjacency matrix
+    2.Adjacency list
+  그래프 탐색 - BFS/DFS -> Ch.6
+  
+  
