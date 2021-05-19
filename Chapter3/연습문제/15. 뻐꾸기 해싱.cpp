@@ -1,13 +1,13 @@
-// 15. »µ²Ù±â ÇØ½Ì - n°³ÀÇ ÇØ½Ã Å×ÀÌºí ÀÌ¿ë
+// 15. ë»ê¾¸ê¸° í•´ì‹± - nê°œì˜ í•´ì‹œ í…Œì´ë¸” ì´ìš©
 #include<iostream>
 #include<vector>
 
-class hash_map { // 2°³ÀÇ ÇØ½Ã Å×ÀÌºí ÀÌ¿ë
+class hash_map { // 2ê°œì˜ í•´ì‹œ í…Œì´ë¸” ì´ìš©
 	std::vector<int> data1;
 	std::vector<int> data2;
-	int size; // °¢°¢ÀÇ ÇØ½Ã Å×ÀÌºí Å©±â
+	int size; // ê°ê°ì˜ í•´ì‹œ í…Œì´ë¸” í¬ê¸°
 
-	//2 °³ÀÇ ÇØ½Ã ÇÔ¼ö Á¤ÀÇ -> ÇÊ¿ä¿¡ µû¶ó ÇüÅÂ Á¶ÀıÇÏ¸é µÊ
+	//2 ê°œì˜ í•´ì‹œ í•¨ìˆ˜ ì •ì˜ -> í•„ìš”ì— ë”°ë¼ í˜•íƒœ ì¡°ì ˆí•˜ë©´ ë¨
 	int hash1(int key) const {
 		return key % size;
 	}
@@ -17,36 +17,36 @@ class hash_map { // 2°³ÀÇ ÇØ½Ã Å×ÀÌºí ÀÌ¿ë
 
 public:
 	hash_map(int n) : size(n) {
-		data1 = std::vector<int>(size, -1); // ¸ğµç °ª -1·Î ÃÊ±âÈ­
+		data1 = std::vector<int>(size, -1); // ëª¨ë“  ê°’ -1ë¡œ ì´ˆê¸°í™”
 		data2 = std::vector<int>(size, -1);
 	}
 
 	std::vector<int>::iterator lookup(int key) {
 		auto hash_value1 = hash1(key);
 		if (data1[hash_value1] == key) {
-			std::cout << "1¹ø Å×ÀÌºí¿¡¼­ " << key << "À»(¸¦) Ã£¾Ò½À´Ï´Ù." << std::endl;
+			std::cout << "1ë²ˆ í…Œì´ë¸”ì—ì„œ " << key << "ì„(ë¥¼) ì°¾ì•˜ìŠµë‹ˆë‹¤." << std::endl;
 			return data1.begin() + hash_value1;
 		}
 
 		auto hash_value2 = hash2(key);
 		if (data2[hash_value2] == key)
 		{
-			std::cout << "2¹ø Å×ÀÌºí¿¡¼­ " << key << "À»(¸¦) Ã£¾Ò½À´Ï´Ù." << std::endl;
+			std::cout << "2ë²ˆ í…Œì´ë¸”ì—ì„œ " << key << "ì„(ë¥¼) ì°¾ì•˜ìŠµë‹ˆë‹¤." << std::endl;
 			return data2.begin() + hash_value2;
 		}
 
-		return data2.end(); // ¸ø Ã£Àº °æ¿ì
+		return data2.end(); // ëª» ì°¾ì€ ê²½ìš°
 	}
 
 	void erase(int key) {
 		auto position = lookup(key);
-		if (position != data2.end()) { // Ã£Àº °æ¿ì
+		if (position != data2.end()) { // ì°¾ì€ ê²½ìš°
 			*position = -1;
-			std::cout << key << "¿¡ ÇØ´çÇÏ´Â ¿ø¼Ò¸¦ »èÁ¦Çß½À´Ï´Ù." << std::endl;
+			std::cout << key << "ì— í•´ë‹¹í•˜ëŠ” ì›ì†Œë¥¼ ì‚­ì œí–ˆìŠµë‹ˆë‹¤." << std::endl;
 		}
 		else
 		{
-			std::cout << key << "Å°¸¦ Ã£Áö ¸øÇß½À´Ï´Ù." << std::endl;
+			std::cout << key << "í‚¤ë¥¼ ì°¾ì§€ ëª»í–ˆìŠµë‹ˆë‹¤." << std::endl;
 		}
 	}
 
@@ -54,34 +54,34 @@ public:
 		insert_impl(key, 0, 1);
 	}
 	void insert_impl(int key, int cnt, int table) {
-		if (cnt >= size) {
-			std::cout << key << " »ğÀÔ ½Ã »çÀÌÅ¬ ¹ß»ı: ÀçÇØ½ÌÀÌ ÇÊ¿äÇÕ´Ï´Ù!" << std::endl;
+		if (cnt >= size) { // ë‹¨ìˆœíˆ ìˆœí™˜ì˜ ê¸°ì¤€ì„ ê·¸ëƒ¥ ì¬ê·€ í•¨ìˆ˜ í˜¸ì¶œ íšŸìˆ˜ë¡œ ì •í–ˆìŒ
+			std::cout << key << " ì‚½ì… ì‹œ ì‚¬ì´í´ ë°œìƒ: ì¬í•´ì‹±ì´ í•„ìš”í•©ë‹ˆë‹¤!" << std::endl;
 			return;
 		}
 
-		if (table == 1) { // 1¹ø Å×ÀÌºí
+		if (table == 1) { // 1ë²ˆ í…Œì´ë¸”
 			int hash = hash1(key);
-			if (data1[hash] == -1) {// ºó °æ¿ì
-				std::cout << table << "¹ø Å×ÀÌºí¿¡ " << key << " »ğÀÔ" << std::endl;
+			if (data1[hash] == -1) {// ë¹ˆ ê²½ìš°
+				std::cout << table << "ë²ˆ í…Œì´ë¸”ì— " << key << " ì‚½ì…" << std::endl;
 				data1[hash] = key;
 			}
-			else { // ´Ù¸¥ °ªÀÌ ÀÖ´Â °æ¿ì
+			else { // ë‹¤ë¥¸ ê°’ì´ ìˆëŠ” ê²½ìš°
 				int old = data1[hash];
 				data1[hash] = key;
-				std::cout << table << "¹ø Å×ÀÌºí¿¡ " << key << " »ğÀÔ: ±âÁ¸ÀÇ " << old << " ÀÌµ¿ -> ";
+				std::cout << table << "ë²ˆ í…Œì´ë¸”ì— " << key << " ì‚½ì…: ê¸°ì¡´ì˜ " << old << " ì´ë™ -> ";
 				insert_impl(old, cnt + 1, 2);
 			}
 		}
-		else { // 2¹ø Å×ÀÌºí
+		else { // 2ë²ˆ í…Œì´ë¸”
 			int hash = hash2(key);
-			if (data2[hash] == -1) { // ºó °æ¿ì
-				std::cout << table << "¹ø Å×ÀÌºí¿¡ " << key << " »ğÀÔ" << std::endl;
+			if (data2[hash] == -1) { // ë¹ˆ ê²½ìš°
+				std::cout << table << "ë²ˆ í…Œì´ë¸”ì— " << key << " ì‚½ì…" << std::endl;
 				data2[hash] = key;
 			}
-			else { // ÀÌ¹Ì °ª ÀÖ´Â °æ¿ì
+			else { // ì´ë¯¸ ê°’ ìˆëŠ” ê²½ìš°
 				int old = data2[hash];
 				data2[hash] = key;
-				std::cout << table << "¹ø Å×ÀÌºí¿¡ " << key << " »ğÀÔ: ±âÁ¸ÀÇ " << old << " ÀÌµ¿ -> ";
+				std::cout << table << "ë²ˆ í…Œì´ë¸”ì— " << key << " ì‚½ì…: ê¸°ì¡´ì˜ " << old << " ì´ë™ -> ";
 				insert_impl(old, cnt + 1, 1);
 			}
 		}
@@ -128,5 +128,5 @@ int main()
 	map.print();
 	std::cout << std::endl;
 
-	map.insert(14); // »çÀÌÅ¬ ¹ß»ı!
+	map.insert(14); // ì‚¬ì´í´ ë°œìƒ!
 }
