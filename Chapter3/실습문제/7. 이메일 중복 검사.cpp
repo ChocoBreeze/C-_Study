@@ -1,10 +1,10 @@
-// ÀÌ¸ŞÀÏ ÁÖ¼Ò Áßº¹ °Ë»ç -- bloom filter ÀÌ¿ë
+// ì´ë©”ì¼ ì£¼ì†Œ ì¤‘ë³µ ê²€ì‚¬ -- bloom filter ì´ìš©
 
 #include<iostream>
 #include<string>
 #include<vector>
 
-#include<openssl/md5.h> // ¼³Ä¡ ÇÊ¿ä
+#include<openssl/md5.h> // ì„¤ì¹˜ í•„ìš”
 
 class BloomFilter {
 	int nHashes;
@@ -17,15 +17,16 @@ class BloomFilter {
 public:
 	BloomFilter(int size, int hashes) : bits(size), nHashes(hashes) {
 		if (nHashes > hashSize) {
-			throw("ÇØ½Ã ÇÔ¼ö °³¼ö°¡ ³Ê¹« ¸¹½À´Ï´Ù.");
+			throw("í•´ì‹œ í•¨ìˆ˜ ê°œìˆ˜ê°€ ë„ˆë¬´ ë§ìŠµë‹ˆë‹¤.");
 		}
 
 		if (size > 255) {
-			throw("ºí·ë ÇÊÅÍ Å©±â°¡ 255º¸´Ù Å¬ ¼ö ¾ø½À´Ï´Ù.");
+			throw("ë¸”ë£¸ í•„í„° í¬ê¸°ê°€ 255ë³´ë‹¤ í´ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 		}
 	}
 	void hash(const std::string& key) {
 		MD5(reinterpret_cast<const unsigned char*>(key.data()), key.length(), hashValue);
+		// string.data() -> pointer ë°˜í™˜
 	}
 
 	void add(const std::string& key) {
@@ -34,18 +35,18 @@ public:
 			bits[*it%bits.size()] = true;
 		}
 
-		std::cout << "ºÒ·ë ÇÊÅÍ¿¡ Ãß°¡: " << key << std::endl;
+		std::cout << "ë¶ˆë£¸ í•„í„°ì— ì¶”ê°€: " << key << std::endl;
 	}
 	bool mayContain(const std::string& key) {
 		hash(key);
 		for (auto it = &hashValue[0]; it < &hashValue[nHashes]; it++) {
 			if (!bits[*it% bits.size()]) {
-				std::cout << key << " : »ç¿ëÇÒ ¼ö ÀÖ´Â ÀÌ¸ŞÀÏÀÔ´Ï´Ù." << std::endl;
+				std::cout << key << " : ì‚¬ìš©í•  ìˆ˜ ìˆëŠ” ì´ë©”ì¼ì…ë‹ˆë‹¤." << std::endl;
 				return false;
 			}
 		}
 
-		std::cout << key << ": ÀÌ¹Ì »ç¿ë ÁßÀÔ´Ï´Ù." << std::endl;
+		std::cout << key << ": ì´ë¯¸ ì‚¬ìš© ì¤‘ì…ë‹ˆë‹¤." << std::endl;
 		return true;
 	}
 };
