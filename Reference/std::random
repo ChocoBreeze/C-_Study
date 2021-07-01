@@ -1,0 +1,22 @@
+<random>
+
+c++ 11 에서는 메르센 트위스터라는 유사난수 생성기를 이용해서 랜덤값을 만들어 낸다.
+메르센 트위스터는 난수 반복주기가 메르센 소수에서 유래했고 품질과 속도가 좋아 많은곳에서 채택되고 있다 한다.
+주기가 2^19937 -1 인 MT19937 을 가장 많이 사용하며 64비트 수를 생성하는 MT19337 - 64 도 사용된다.
+mersenne twister(mt)19937 --> 메르센 트위스터 엔진
+
+-코드 예시-
+std::random_device rd;
+--> 외부 디바이스에서 임의 시퀀스 생성
+random_device 결과는 닫힌 범위 [ 0, 2^32) 내에서 균일하게 분포됩니다.
+일반적으로 random_device는 엔진 또는 엔진 어댑터를 통해 생성된 다른 생성기(엔진)를 시드하는 데 사용됩니다. 
+
+std::mt19937 rand(rd()); // mersenne twister, seeded using the random device
+
+std::uniform_int_distribution<std::mt19937::result_type> uniform_dist(1, size);
+//1, size 범위 내에서 랜덤한 값을 뽑아낸다(균등한 정수 분포)
+(다양한 분포 존재)
+
+S.push_back(uniform_dist(rand));
+
+
