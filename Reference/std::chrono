@@ -1,0 +1,19 @@
+<std::chrono>
+
+기존의 <time>보다 더 정밀하고 작은 단위(나노, 밀리)도 가능.
+std::chrono::system_clock = the system-wide real time wall clock. --> 현재 시간 볼 수 있는 시계
+std::chrono::steady_clock = monotonic clock --> 스탑워치
+
+
+-현재 시간 얻기
+1. std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
+2. auto start = std::chrono::system_clock::now();
+
+
+-소모 시간 측정
+std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+	-시간 측정할 코드-
+std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+auto diff = std::chrono::duration_cast<std::chrono::microseconds>(end - begin); // 시간 차이
+
+std::chrono::microseconds대신에 nanoseconds, miliseconds, seconds, minutes, hours 등이 존재
