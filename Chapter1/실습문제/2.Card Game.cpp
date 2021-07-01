@@ -5,7 +5,7 @@
 #include<algorithm> // ?
 #include<random> // default_random_engine
 #include<chrono> // time
-#include<string> // Ãß°¡
+#include<string> // ì¶”ê°€
 
 struct card {
 	int number;
@@ -76,9 +76,9 @@ struct game {
 	void dealCards() {
 		unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
 		std::shuffle(deck.begin(), deck.end(), std::default_random_engine(seed));
-		//±âÁ¸ C¿¡¼­´Â srand¿Í randÀÌ¿ë
-		//C++¿¡¼­´Â seed + std::default_random_engine
-		// https://goguri.tistory.com/1399 Âü°í
+		//ê¸°ì¡´ Cì—ì„œëŠ” srandì™€ randì´ìš©
+		//C++ì—ì„œëŠ” seed + std::default_random_engine
+		// https://goguri.tistory.com/1399 ì°¸ê³ 
 		p1 = { deck.begin(),deck.begin() + 13 };
 		p2 = { deck.begin() + 13,deck.begin() + 26 };
 		p3 = { deck.begin() + 26,deck.begin() + 39 };
@@ -130,14 +130,14 @@ struct game {
 
 	void playGame() {
 		int count=0;
-		while (not isGameComplete()) { // ? ÀÌ°Íµµ µÇ´ÂÁö ¸ô¶ú´Ù..
-			std::cout << count << "¹øÂ° ÅÏ ¼öÇà Áß" << std::endl; //Ãß°¡
+		while (not isGameComplete()) { // ? ì´ê²ƒë„ ë˜ëŠ”ì§€ ëª°ëë‹¤..
+			std::cout << count << "ë²ˆì§¸ í„´ ìˆ˜í–‰ ì¤‘" << std::endl; //ì¶”ê°€
 			playOneRound();
-			// 5ÁÙ Ãß°¡
-			std::cout << "p1ÀÇ Ä«µå ¼ö : " << p1.size() << std::endl;
-			std::cout << "p2ÀÇ Ä«µå ¼ö : " << p2.size() << std::endl;
-			std::cout << "p3ÀÇ Ä«µå ¼ö : " << p3.size() << std::endl;
-			std::cout << "p4ÀÇ Ä«µå ¼ö : " << p4.size() << std::endl << std::endl;
+			// 5ì¤„ ì¶”ê°€
+			std::cout << "p1ì˜ ì¹´ë“œ ìˆ˜ : " << p1.size() << std::endl;
+			std::cout << "p2ì˜ ì¹´ë“œ ìˆ˜ : " << p2.size() << std::endl;
+			std::cout << "p3ì˜ ì¹´ë“œ ìˆ˜ : " << p3.size() << std::endl;
+			std::cout << "p4ì˜ ì¹´ë“œ ìˆ˜ : " << p4.size() << std::endl << std::endl;
 			count++;
 		}
 	}
@@ -156,6 +156,6 @@ int main() {
 	newGame.dealCards();
 	newGame.playGame();
 	auto winner = newGame.getWinner();
-	std::cout << winner << "¹ø ÇÃ·¹ÀÌ¾î°¡ ÀÌ°å½À´Ï´Ù!" << std::endl;
+	std::cout << winner << "ë²ˆ í”Œë ˆì´ì–´ê°€ ì´ê²¼ìŠµë‹ˆë‹¤!" << std::endl;
 	return 0;
 }
