@@ -25,7 +25,7 @@ bool binary_search(int N, std::vector<int>& S) {
 		else if (mid_element > N) std::advance(last, -mid_element_index);
 		else std::advance(first, mid_element_index);
 
-		if (range_length == 1) return false; // ÇÏ³ªÀÇ ¿ø¼Ò¸¸ ³²À½
+		if (range_length == 1) return false; // í•˜ë‚˜ì˜ ì›ì†Œë§Œ ë‚¨ìŒ
 	}
 }
 
@@ -35,14 +35,14 @@ void run_small_search_test() {
 	std::sort(S.begin(), S.end());
 
 	if (linear_search(N, S))
-		std::cout << "¼±Çü °Ë»ö ¼º°ø!" << std::endl;
+		std::cout << "ì„ í˜• ê²€ìƒ‰ ì„±ê³µ!" << std::endl;
 	else
-		std::cout << "¼±Çü °Ë»ö ½ÇÆĞ!" << std::endl;
+		std::cout << "ì„ í˜• ê²€ìƒ‰ ì‹¤íŒ¨!" << std::endl;
 
 	if (binary_search(N, S))
-		std::cout << "ÀÌÁø °Ë»ö ¼º°ø!" << std::endl;
+		std::cout << "ì´ì§„ ê²€ìƒ‰ ì„±ê³µ!" << std::endl;
 	else
-		std::cout << "ÀÌÁø °Ë»ö ½ÇÆĞ!" << std::endl;
+		std::cout << "ì´ì§„ ê²€ìƒ‰ ì‹¤íŒ¨!" << std::endl;
 }
 
 void run_large_search_test(int size, int N) {
@@ -51,27 +51,27 @@ void run_large_search_test(int size, int N) {
 	std::mt19937 rand(rd());
 	
 	std::uniform_int_distribution<std::mt19937::result_type> uniform_dist(1, size);
-	//1, size ¹üÀ§ ³»¿¡¼­ ·£´ıÇÑ °ªÀ» »Ì¾Æ³½´Ù(±ÕµîÇÑ Á¤¼ö ºĞÆ÷)
+	//1, size ë²”ìœ„ ë‚´ì—ì„œ ëœë¤í•œ ê°’ì„ ë½‘ì•„ë‚¸ë‹¤(ê· ë“±í•œ ì •ìˆ˜ ë¶„í¬)
 
-	// S¿¡ ³­¼ö Ãß°¡
+	// Sì— ë‚œìˆ˜ ì¶”ê°€
 	for (auto i = 0; i < size; i++) {
 		S.push_back(uniform_dist(rand));
 	}
 
 	std::sort(S.begin(), S.end());
 
-	// ½Ã°£ ÃøÁ¤
+	// ì‹œê°„ ì¸¡ì •
 	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 	bool search_result = binary_search(N, S);
 	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
-	auto diff = std::chrono::duration_cast<std::chrono::microseconds>(end - begin); // ½Ã°£ Â÷ÀÌ
-	std::cout << "ÀÌÁø °Ë»ö ¼öÇà ½Ã°£: " << diff.count() << std::endl;
+	auto diff = std::chrono::duration_cast<std::chrono::microseconds>(end - begin); // ì‹œê°„ ì°¨ì´
+	std::cout << "ì´ì§„ ê²€ìƒ‰ ìˆ˜í–‰ ì‹œê°„: " << diff.count() << "us" << std::endl;
 
 	if (search_result)
-		std::cout << "¿ø¼Ò¸¦ Ã£¾Ò½À´Ï´Ù." << std::endl;
+		std::cout << "ì›ì†Œë¥¼ ì°¾ì•˜ìŠµë‹ˆë‹¤." << std::endl;
 	else
-		std::cout << "¿ø¼Ò¸¦ Ã£Áö ¸øÇß½À´Ï´Ù." << std::endl;
+		std::cout << "ì›ì†Œë¥¼ ì°¾ì§€ ëª»í–ˆìŠµë‹ˆë‹¤." << std::endl;
 
 }
 
