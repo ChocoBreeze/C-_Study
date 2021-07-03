@@ -3,3 +3,7 @@
   -단순해서 일부 알고리즘 문제에만 적용 가능하지만 문제 해결을 위한 '첫걸음'이 될 수 있다.
   
 2. 기본적인 Greedy Algorithm
+  -Shortest-job-first-scheduling(최단 작업 우선 스케줄링)
+  -Fractional kanpsack problem(분할 가능 배낭 문제) -- 물건의 일부를 담을 수 있다는 전제
+    0-1 kanpsack은 np-complete라 다항 시간 내에 불가능
+    --> 문제 정의의 작은 차이가 문제 해결 방법에 큰 변화를 가져 온다.
