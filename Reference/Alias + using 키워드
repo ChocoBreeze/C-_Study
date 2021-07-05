@@ -1,0 +1,63 @@
+# C++ : using 을 이용한 Alias 이용.
+
+
+ex)
+
+  typedef std::shared_ptr<MyClass> MyClassPtr; 
+  using MyClassPtr = std::shared_ptr<MyClass>;
+
+-함수형 정의-
+  typedef std::shared_ptr<MyClass> my_make_shared(int, std::string); 
+  using my_make_shared = std::shared_ptr<MyClass>(int, std::string);
+
+-using : template 지원도 가능
+  template <typename T>
+  using my_make_shared = std::shared_ptr<T>(T*);
+
+  template <typename T>
+  using my_vector = std::vector<T>;
+  
+template 활용 여부의 차이만 존재.
+내부적으로는 동일하다고 명시되어 있으므로 작업하는 기준에 맞추자!
+
+출처: https://unikys.tistory.com/381 [All-round programmer]
+
+
+# Using 의 사용
+
+1. namespace using 지시자(Directive) --> using namespace std;
+2. namespace using 선언(Declaration) --> using std::cout;
+
+-충돌-
+1.번처럼 선언한 경우 std::변수이름 으로 사용 / 2.번처럼 선언한 경우 그냥 변수이름 만 사용해도 지장이 없음.
+
+3. 타입 정의 --> Alias
+4. 클래스 계층에서의 사용
+#include<iostream>
+
+using namespace std;
+
+class Parent {
+public:
+	int age;
+	Parent() : age(0) {};
+};
+
+class Child : Parent { // default = private
+public:
+	using Parent::age;
+	int get_age() {
+		return this->age;
+	}
+};
+
+int main() {
+	Child c;
+	c.age = 5;
+
+	cout << c.get_age();
+	return 0;
+}
+약간의 코드 변형을 한 것인데, private 상속을 해도 using 키워드로 접근 무시 가능하다.
+
+출처 : https://cjwoov.tistory.com/68
