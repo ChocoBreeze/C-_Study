@@ -7,3 +7,9 @@
   -Fractional kanpsack problem(분할 가능 배낭 문제) -- 물건의 일부를 담을 수 있다는 전제
     0-1 kanpsack은 np-complete라 다항 시간 내에 불가능
     --> 문제 정의의 작은 차이가 문제 해결 방법에 큰 변화를 가져 온다.
+  -Greedy Algorithm 요구 조건
+    1.최적 부분 구조(optimal structure) : 주어진 문제 P에 대한 최적의 솔루션이 P에 대한 부분 문제들의 최적의 솔루션으로 구성되는 경우, 그 문제가 최적의 부분 구조를 갖는다고 말함.
+    2.그리디 선택(greedy choice) : 주어진 문제 P에 대한 지역적 최적 솔루션을 반복적으로 선택해 전체 최적 솔루션을 구할 수 있을 경우, 문제 P가 그리디 선택 속성을 갖는다 말함.
+    ex) 크루스칼 최소 신장 트리(Minimum Spanning Tree)
+      G = (V, E) --> 모든 정점 연결 + edge 합 최소인 트리 구하기
+      cycle 확인 --> disjoint-set 자료 구조 이용(트리 형태의 원소로 구성된 forest)
