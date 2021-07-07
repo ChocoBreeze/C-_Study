@@ -1,0 +1,11 @@
+그래프.
+  -G = <V, E> V = 정점의 집합 / E = Edge의 집합.
+
+  1. 그래프 순회(graph traversal) 문제
+    -특정 정점에서 시작하여 나머지 모든 정점을 방문하는 문제.
+    -특정 정점을 찾기 위한 용도로 사용가능하기 때문에 그래프 탐색 문제(graph search problem)이라고 하기도 함.
+      BFS(Breadth-First Search) : 정점 ID를 큐에 저장해 가까운 정점을 멀리 있는 정점보다 먼저 방문할 수 있도록 구현 / 시간 복잡도 = O(V+E)
+      DFS(Depth-First Search) : 특정 경로를 따라 가능한 멀리 있는 정점을 재귀적으로 먼저 방문(Backtracking), 스택을 통해 구현 / 시간 복잡도 = O(V+E)
+      
+    
+    
