@@ -1,5 +1,6 @@
 # C-_Study
-책 따라서 연습 해보기
+## 책 코드 학습
+### 책 : 코딩 테스트를 위한 자료 구조와 알고리즘 with C++
+- <img src="https://user-images.githubusercontent.com/75352656/185182507-399dfcd4-c7da-4118-9df8-94dccb1748c5.jpg" width="392" height="480">
+- github : https://github.com/gilbutITbook/080239
 
-https://github.com/gilbutITbook/080239
-교재 : 코딩 테스트를 위한 자료 구조와 알고리즘 with C++
